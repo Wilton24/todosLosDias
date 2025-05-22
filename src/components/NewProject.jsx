@@ -12,11 +12,10 @@ export default function NewProject({handleAddProject}){
       title: titleRef.current.value,
       description: descriptionRef.current.value,
       dueDate: dueDateRef.current.value
-    };    
-    console.log(newProject);
-    
+    };        
+    handleAddProject(newProject);        
   };
-  
+
 
 
   return (
