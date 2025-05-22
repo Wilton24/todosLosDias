@@ -7,8 +7,8 @@ import { forwardRef, useRef } from "react";
     <p className="flex flex-col gap-1 my-4">
       <label className="text-sm font-bold uppercase text-stone-500">{label}</label>
       {textarea ? 
-        <textarea className={textAreaClassName} {...props} /> : 
-        <input className={textAreaClassName} {...props} />}
+        <textarea ref={ref} className={textAreaClassName} {...props} /> : 
+        <input ref={ref} className={textAreaClassName} {...props} />}
     </p>
 
   )

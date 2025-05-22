@@ -9,6 +9,7 @@ function App() {
     projects: [],
   });
 
+  // handleAddStartProject: sets the selectedProjectId to null
   function handleAddStartProject(){
     setProjectsState(prevState =>{
       return {
@@ -18,10 +19,33 @@ function App() {
     })    
   };
 
+  
+  function handleAddProject(projectData){
+    setProjectsState(prevState =>{
+      const newProject = {
+        ...projectData,
+        id: Math.random()
+      };
+      return {
+        ...prevState,
+        projects: [...prevState.projects, newProject]
+        }
+    })
+  }
+
+  function handleSaveTodo(){
+    setProjectsState(prevState =>{
+      return {
+        ...prevState,
+        projects: [...prevState.projects, ]
+      }
+    })
+  }
+
   let content;
 
   if(projectsState.selectedProjectId === null){
-    content = <NewProject />;
+    content = <NewProject handleAddProject={handleAddProject} />;
   } else if(projectsState.selectedProjectId == undefined){
     content = <NoProjectSelected onStartAddProject={handleAddStartProject} />
   }
