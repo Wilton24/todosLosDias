@@ -32,10 +32,7 @@ function App() {
         selectedProjectId: undefined,
         projects: [...prevState.projects, newProject]
         }
-    })
-
-    console.log(projectsState.projects);
-    
+    })    
   }
 
   function handleSaveTodo(){
@@ -45,12 +42,21 @@ function App() {
         projects: [...prevState.projects, ]
       }
     })
-  }
+  };
+
+  function handleCancel(){
+    setProjectsState(prevState => {
+      return {
+        ...prevState,
+        selectedProjectId: undefined
+      }
+    });    
+  };
 
   let content;
 
   if(projectsState.selectedProjectId === null){
-    content = <NewProject handleAddProject={handleAddProject} setProjectsState={setProjectsState} />;
+    content = <NewProject handleAddProject={handleAddProject} handleCancel={handleCancel}/>;
   } else if(projectsState.selectedProjectId == undefined){
     content = <NoProjectSelected onStartAddProject={handleAddStartProject} />
   }
