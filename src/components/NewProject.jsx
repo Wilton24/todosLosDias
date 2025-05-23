@@ -14,9 +14,8 @@ export default function NewProject({handleAddProject, handleCancel}){
   if(titleRef.current.value.trim() === "" || 
     descriptionRef.current.value.trim() === "" || 
     dueDateRef.current.value.trim() === "") { 
-      console.log('Error Spack');      
-      modalRef.current.openModal();
-      return;
+      modalRef.current.openModal(); 
+      // return;
     } else{
     const newProject = {
       title: titleRef.current.value,
