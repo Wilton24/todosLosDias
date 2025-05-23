@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import Input from "./Input";
 import Modal from "../modals/Modal";
 
-export default function NewProject({handleAddProject, handleCancel}){
+export default function NewProject({handleAddProject, handleCancel, handleDeleteProject}) {
   const titleRef = useRef();
   const descriptionRef = useRef();
   const dueDateRef = useRef();
