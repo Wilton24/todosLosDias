@@ -4,7 +4,7 @@ export default function NewTask({onAddTask}){
   const [enteredTask, setEnteredTask] = useState('');
 
   function handleTask(){
-    onAddTask(enteredTask);
+    onAddTask(enteredTask);    
     // setEnteredTask('');
   };
 

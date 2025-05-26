@@ -1,10 +1,11 @@
 import NewTask from "./NewTask"
 
-export default function Tasks({onAddtask, onDeleteTask, tasks}){
+export default function Tasks({onAddTask, onDeleteTask, tasks}){
+
   return (
     <section>
       <h2 className="text-2xl font-bold text-stone-700 mb-4">Title</h2>
-    <NewTask onAddtask={onAddtask} />
+    <NewTask onAddTask={onAddTask} />
     {tasks.length === 0 && <p className="text-stone-800 my-4">Add task here...</p>}
 
     {tasks.length > 0 &&
@@ -12,7 +13,9 @@ export default function Tasks({onAddtask, onDeleteTask, tasks}){
           {tasks.map((task) => (
              <li key={task.id} className="flex items-center justify-between my-4">
                 <span>{task.text}</span>
-                <button className="text-stone-700 hover:text-red-500">Clear</button>
+                <button
+                  onClick={()=> onDeleteTask(task.id)} 
+                  className="text-stone-700 hover:text-red-500">Clear</button>
              </li>
           )
           )}
