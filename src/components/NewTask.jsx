@@ -1,20 +1,21 @@
 import { useRef, useState } from "react"
 
-export default function NewTask(){
-  const [enteredTask, setEnteredTask] = useState();
-
-  function logTask(e){
-    setEnteredTask(e.target.value)         
-  };
+export default function NewTask({onAddTask}){
+  const [enteredTask, setEnteredTask] = useState('');
 
   function handleTask(){
-    setEnteredTask('');
-  }
+    onAddTask(enteredTask);
+    // setEnteredTask('');
+  };
+
+  function onInputTask(e){
+    setEnteredTask(e.target.value);    
+  };
 
   return (
     <div className="flex items-center gap-4">
       <input 
-        onChange={()=>logTask(event)}
+        onChange={(e)=> onInputTask(e)}
         className="w-64 px-2 py-1 rounded-sm bg-stone-200"
         type="text"
         value={enteredTask} />
