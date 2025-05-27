@@ -24,17 +24,20 @@ function App() {
   // Adding Todo object in an array
   function handleAddProject(projectData){
     setProjectsState(prevState =>{
+      const id = Math.random();
       const newProject = {
         ...projectData,
-        id: Math.random()
+        id
       };
 
       return {
         ...prevState,
-        selectedProjectId: undefined,
+        selectedProjectId: id,
         projects: [...prevState.projects, newProject]
         }
     })    
+    console.log(projectsState);
+    
   }
 
   function handleSaveTodo(){
@@ -57,6 +60,11 @@ function App() {
 
   function handleSelectProject(id){
     setProjectsState(prevState => {
+
+      console.log(`Project id: ${id}`);
+      console.log(projectsState);
+      
+      
       return {
         ...prevState,
         selectedProjectId: id
@@ -74,7 +82,7 @@ function App() {
     })        
   };
 
-  function onAddTask(text){
+  function onAddTask(text, selectedProjectId){
     setProjectsState(prevState =>{
       const taskId = Math.random();
       const newTask = {
@@ -84,6 +92,7 @@ function App() {
       };
       return {
         ...prevState,
+        selectedProjectId,
         tasks: [...prevState.tasks, newTask]
         }
     })        
@@ -96,7 +105,11 @@ function App() {
         tasks: prevState.tasks.filter(task => task.id !== id)
       }
     })
-  }
+  };
+
+
+  console.log(projectsState.selectedProjectId);
+  
   const selectedProject = projectsState.projects.find(project => project.id === projectsState.selectedProjectId);
   
   let content = <SelectedProject
@@ -117,7 +130,8 @@ function App() {
       <Sidebar 
         onStartAddProject={handleAddStartProject}
         projects={projectsState.projects}
-        handleSelectProject={handleSelectProject}/>
+        handleSelectProject={handleSelectProject}
+        selectedProjectId={projectsState.selectedProjectId}/>
       {content}            
     </main>
   );

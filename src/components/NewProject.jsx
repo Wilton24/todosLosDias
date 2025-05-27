@@ -9,12 +9,20 @@ export default function NewProject({handleAddProject, handleCancel, handleDelete
 
   const modalRef = useRef();
 
+
+  function clearInput(){
+    titleRef.current.value = "";
+    descriptionRef.current.value = "";
+    dueDateRef.current.value = "";
+  }
+
   function handleSave(){   // Adding new todo Object in the array
 // validation
   if(titleRef.current.value.trim() === "" || 
     descriptionRef.current.value.trim() === "" || 
     dueDateRef.current.value.trim() === "") { 
       modalRef.current.openModal(); 
+      clearInput();
       // return;
     } else{
     const newProject = {
@@ -23,6 +31,7 @@ export default function NewProject({handleAddProject, handleCancel, handleDelete
       dueDate: dueDateRef.current.value
     };        
     handleAddProject(newProject);    
+    clearInput();
     }
   };
 

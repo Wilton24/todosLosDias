@@ -4,8 +4,9 @@ export default function NewTask({onAddTask}){
   const [enteredTask, setEnteredTask] = useState('');
 
   function handleTask(){
+    if(enteredTask.trim() === '') return;
     onAddTask(enteredTask);    
-    // setEnteredTask('');
+    setEnteredTask('');
   };
 
   function onInputTask(e){
